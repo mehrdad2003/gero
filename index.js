@@ -31,7 +31,8 @@ io.on('connection', locationController.handleSocketConnection);
 
 // Routes ----
 app.use(express.static(__dirname + '/public'));
-app.set('view engine', 'ejs');
+app.set("views", "views");
+app.set("view engine", "ejs");
 
 
 const routes = require('./routes/index');
