@@ -1,5 +1,5 @@
 // Dependencies
-const generateUniqueId = require('generate-unique-id');
+
 
 
 // Create a Map to store active sharingIds and their latest data
@@ -55,7 +55,7 @@ module.exports.handleSocketConnection = (socket) => {
         try {
             // Generate a new unique ID
             let sharingId;
-            do { sharingId = generateUniqueId() } while (activeSharingIds.has(sharingId));
+            do { sharingId = Math.floor(Math.random() * 701) } while (activeSharingIds.has(sharingId));
             socket.sharingId = sharingId;
 
             // Store it in the Map
