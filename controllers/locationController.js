@@ -1,6 +1,6 @@
 // Dependencies
-const uuidV4 = require ('uuid/v4'); //1.9K (gzipped: 818)
-const { v4: uuidV4 } = require ('uuid'); //7.9K (gzipped: 3.3K))
+const generateUniqueId = require('generate-unique-id');
+
 
 // Create a Map to store active sharingIds and their latest data
 const activeSharingIds = new Map();
@@ -55,7 +55,7 @@ module.exports.handleSocketConnection = (socket) => {
         try {
             // Generate a new unique ID
             let sharingId;
-            do { sharingId = uuidv4() } while (activeSharingIds.has(sharingId));
+            do { sharingId = generateUniqueId() } while (activeSharingIds.has(sharingId));
             socket.sharingId = sharingId;
 
             // Store it in the Map
